@@ -1,29 +1,27 @@
 import { Button } from '@/components/ui/button'
-import { AlertTriangle } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { AlertTriangle } from 'lucide-react'
 
 export function NotFoundPage() {
-  const navigate = useNavigate()
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-white to-slate-100">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-50 via-slate-50 to-white">
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="flex flex-col items-center space-y-6"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="flex flex-col items-center bg-white shadow-lg px-8 py-10 rounded-xl border border-slate-100"
       >
-        <span className="rounded-full bg-primary/10 p-4">
-          <AlertTriangle className="w-16 h-16 text-primary animate-bounce" />
-        </span>
-        <h1 className="text-4xl font-inter font-bold text-primary">404 - Page Not Found</h1>
-        <p className="text-slate-700 text-lg max-w-xl text-center">
-          Oops! The page you're looking for doesn't exist in our secure portal.<br />
-          Let's get you back to the right place.
-        </p>
-        <Button id="404-back-home" onClick={() => navigate('/')} className="px-6 py-2 text-lg font-semibold">
-          Go Home
+        <AlertTriangle className="text-blue-700 mb-3" size={48} />
+        <h1 className="font-inter text-4xl font-bold mb-2 text-blue-900">404 Not Found</h1>
+        <p className="font-roboto text-slate-600 mb-8 text-lg">Oops! The page you’re seeking isn’t on the HIPAA Patient Portal.</p>
+        <Button asChild id="back-home" className="font-bold bg-blue-700 text-white hover:bg-blue-800">
+          <Link to="/">Return to Home</Link>
         </Button>
       </motion.div>
+      <div className="mt-8">
+        <img src="/branding/assets/hero-0.png" className="rounded-lg shadow-xl max-w-2xl" style={{ maxHeight: 300 }} />
+      </div>
     </div>
   )
 }
