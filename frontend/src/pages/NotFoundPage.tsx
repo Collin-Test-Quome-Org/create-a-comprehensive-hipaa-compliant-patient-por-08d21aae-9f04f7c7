@@ -1,34 +1,28 @@
-import { Button } from '@/components/ui/button'
-import { ArrowLeft } from 'lucide-react'
-import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import { AlertTriangle } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export function NotFoundPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-slate-100">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-slate-50 to-blue-50">
       <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 120 }}
-        className="bg-white/80 shadow-xl rounded-2xl p-10 flex flex-col items-center"
+        className="flex flex-col items-center justify-center flex-grow"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
       >
-        <div className="flex items-center mb-6">
-          <span className="inline-block text-blue-700 font-inter font-bold text-7xl mr-2">404</span>
-          <span className="inline-block text-blue-400 font-inter text-4xl">Oops!</span>
-        </div>
-        <p className="text-slate-700 font-roboto text-lg mb-4 text-center max-w-md">
-          The page you’re looking for doesn’t exist or has moved. 
+        <AlertTriangle className="w-16 h-16 text-primary mb-6 animate-bounce" />
+        <h1 className="font-bold text-4xl text-primary mb-2 tracking-tight">404: Page Not Found</h1>
+        <p className="text-lg text-slate-700 mb-8 text-center max-w-md">
+          Oops! The page you're looking for doesn't exist or has been moved.<br />
+          Let's help you find your way back to security and care.
         </p>
-        <p className="text-slate-500 font-roboto mb-8 text-center max-w-sm">
-          Having trouble? Our portal guides you to the right place with care and security. Return to the home page to access your medical records, appointments, and more.
-        </p>
-        <Button asChild id="notfound-back-home" className="text-lg font-bold px-6 py-4">
-          <Link to="/">
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Home
-          </Link>
+        <Button asChild id="404-home-btn" className="px-8 py-3 text-lg font-semibold">
+          <Link to="/">Return Home</Link>
         </Button>
       </motion.div>
+      <div className="w-full h-32 bg-gradient-to-t from-blue-100 to-transparent" />
     </div>
   )
 }
