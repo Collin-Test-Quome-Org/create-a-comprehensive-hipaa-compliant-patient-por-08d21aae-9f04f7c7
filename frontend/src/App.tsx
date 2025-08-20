@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Skeleton } from '@/components/ui/skeleton'
+import { NotFoundPage } from '@/pages/NotFoundPage'
 
 export function App() {
   return (
@@ -20,6 +21,7 @@ export function App() {
             </p>
           </div>
         } />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   )
