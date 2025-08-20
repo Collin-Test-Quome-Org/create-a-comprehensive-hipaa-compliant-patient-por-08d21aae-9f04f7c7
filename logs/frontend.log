@@ -1,0 +1,10 @@
+
+> frontend@0.0.0 dev
+> ./node_modules/vite/bin/vite.js --host 0.0.0.0 --port 3000
+
+Port 3000 is in use, trying another one...
+
+  VITE v6.3.5  ready in 295 ms
+
+  ➜  Local:   http://localhost:3001/
+  ➜  Network: http://169.254.0.21:3001/
