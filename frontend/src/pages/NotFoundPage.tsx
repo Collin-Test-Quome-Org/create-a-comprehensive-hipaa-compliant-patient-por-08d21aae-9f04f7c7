@@ -1,27 +1,34 @@
 import { Button } from '@/components/ui/button'
+import { ArrowLeft } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { AlertTriangle } from 'lucide-react'
 
 export function NotFoundPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-50 via-slate-50 to-white">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-slate-100">
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="flex flex-col items-center bg-white shadow-lg px-8 py-10 rounded-xl border border-slate-100"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 120 }}
+        className="bg-white/80 shadow-xl rounded-2xl p-10 flex flex-col items-center"
       >
-        <AlertTriangle className="text-blue-700 mb-3" size={48} />
-        <h1 className="font-inter text-4xl font-bold mb-2 text-blue-900">404 Not Found</h1>
-        <p className="font-roboto text-slate-600 mb-8 text-lg">Oops! The page you’re seeking isn’t on the HIPAA Patient Portal.</p>
-        <Button asChild id="back-home" className="font-bold bg-blue-700 text-white hover:bg-blue-800">
-          <Link to="/">Return to Home</Link>
+        <div className="flex items-center mb-6">
+          <span className="inline-block text-blue-700 font-inter font-bold text-7xl mr-2">404</span>
+          <span className="inline-block text-blue-400 font-inter text-4xl">Oops!</span>
+        </div>
+        <p className="text-slate-700 font-roboto text-lg mb-4 text-center max-w-md">
+          The page you’re looking for doesn’t exist or has moved. 
+        </p>
+        <p className="text-slate-500 font-roboto mb-8 text-center max-w-sm">
+          Having trouble? Our portal guides you to the right place with care and security. Return to the home page to access your medical records, appointments, and more.
+        </p>
+        <Button asChild id="notfound-back-home" className="text-lg font-bold px-6 py-4">
+          <Link to="/">
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Back to Home
+          </Link>
         </Button>
       </motion.div>
-      <div className="mt-8">
-        <img src="/branding/assets/hero-0.png" className="rounded-lg shadow-xl max-w-2xl" style={{ maxHeight: 300 }} />
-      </div>
     </div>
   )
 }
